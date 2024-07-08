@@ -1,0 +1,86 @@
+
+
+create database sevd;
+
+CREATE TABLE CARRERAS (
+IdCarrera SERIAL PRIMARY KEY,
+Nombre VARCHAR(100),
+Descripcion TEXT,
+PlanEstudioCarr VARCHAR(100),
+ResolMinisterial VARCHAR(50)
+);
+
+CREATE TABLE MATERIAS (
+IdMateria SERIAL PRIMARY KEY,
+Nombre VARCHAR(100),
+AnioCursado INT,
+PlanEstudioMat VARCHAR(100),
+IdCarrera4 INT,
+FOREIGN KEY (IdCarrera4) REFERENCES CARRERAS(IdCarrera)
+);
+
+CREATE TABLE ESTUDIANTES (
+IdEstudiante SERIAL PRIMARY KEY,
+Nombre VARCHAR(30),
+Apellido VARCHAR(30),
+FechaNacimiento DATE,
+Direccion VARCHAR(100),
+Telefono VARCHAR(20),
+Correo VARCHAR(100),
+IdCarrera1 INT,
+FOREIGN KEY (IdCarrera1) REFERENCES CARRERAS(IdCarrera)
+);
+
+CREATE TABLE CORRELATIVIDADES (
+IdCorrelatividad SERIAL PRIMARY KEY,
+IdMateria1 INT,
+IdMateria2 INT,
+FOREIGN KEY (IdMateria1) REFERENCES MATERIAS(IdMateria),
+FOREIGN KEY (IdMateria2) REFERENCES MATERIAS(IdMateria)
+);
+
+CREATE TABLE MESAS (
+IdMesa SERIAL PRIMARY KEY,
+FechaHora TIMESTAMP,
+InicioInscripcion DATE,
+FinInscripcion DATE
+);
+
+SET DATESTYLE TO 'European';
+
+CREATE TABLE INSCRIPCIONES (
+IdInscripcion SERIAL PRIMARY KEY,
+Estado VARCHAR(20),
+FechaInscripcion DATE,
+IdEstudiante1 INT,
+IdMateria3 INT,
+FOREIGN KEY (IdEstudiante1) REFERENCES ESTUDIANTES(IdEstudiante),
+FOREIGN KEY (IdMateria3) REFERENCES MATERIAS(IdMateria)
+);
+
+CREATE TABLE ESTUDIANTES_MESAS (
+IdEstudiante2 INT,
+IdMesa1 INT,
+NotaExamen DECIMAL(4, 2),
+PRIMARY KEY (IdEstudiante, IdMesa),
+FOREIGN KEY (IdEstudiante) REFERENCES ESTUDIANTES(IdEstudiante),
+FOREIGN KEY (IdMesa) REFERENCES MESAS(IdMesa)
+);
+
+CREATE TABLE TIPONOTAS (
+IdTipoNota SERIAL PRIMARY KEY,
+Descripcion VARCHAR(100)
+);
+
+CREATE TABLE NOTAS (
+IdNota SERIAL PRIMARY KEY,
+Valor DECIMAL(4, 2),
+IdInscripcion1 INT,
+IdTipoNota1 INT,
+FOREIGN KEY (IdInscripcion1) REFERENCES INSCRIPCIONES(IdInscripcion),
+FOREIGN KEY (IdTipoNota1) REFERENCES TIPONOTAS(IdTipoNota)
+);
+
+
+
+

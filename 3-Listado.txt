@@ -1,0 +1,57 @@
+--Listado de estudiantes--
+
+SELECT 
+    e.IdEstudiante, 
+    e.Nombre, 
+    e.Apellido, 
+    e.FechaNacimiento, 
+    e.Direccion, 
+    e.Telefono, 
+    e.Correo, 
+    c.Nombre AS Carrera
+FROM 
+    ESTUDIANTES e
+JOIN 
+    CARRERAS c ON e.IdCarrera1 = c.IdCarrera
+ORDER BY 
+    e.IdEstudiante;
+
+--Listado de las materias donde estan inscritos los estudiantes, con su estado y fecha de inscripcion--
+
+SELECT 
+    e.Nombre AS Estudiante, 
+    e.Apellido, 
+    m.Nombre AS Materia, 
+    i.Estado, 
+    i.FechaInscripcion
+FROM 
+    INSCRIPCIONES i
+JOIN 
+    ESTUDIANTES e ON i.IdEstudiante1 = e.IdEstudiante
+JOIN 
+    MATERIAS m ON i.IdMateria3 = m.IdMateria
+ORDER BY 
+    e.IdEstudiante, i.FechaInscripcion;
+
+--Nota de los estudiantes por materias--
+
+SELECT 
+    e.Nombre AS Estudiante, 
+    e.Apellido, 
+    m.Nombre AS Materia, 
+    n.Valor AS Nota, 
+    t.Descripcion AS TipoNota
+FROM 
+    NOTAS n
+JOIN 
+    INSCRIPCIONES i ON n.IdInscripcion1 = i.IdInscripcion
+JOIN 
+    ESTUDIANTES e ON i.IdEstudiante1 = e.IdEstudiante
+JOIN 
+    MATERIAS m ON i.IdMateria3 = m.IdMateria
+JOIN 
+    TIPONOTAS t ON n.IdTipoNota1 = t.IdTipoNota
+WHERE 
+    i.Estado = 'Inscrito'
+ORDER BY 
+    e.IdEstudiante, m.IdMateria;

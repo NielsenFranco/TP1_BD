@@ -1,0 +1,68 @@
+insert into CARRERAS (IdCarrera, Nombre, Descripcion, PlanEstudioCarr, ResolMinisterial)
+values (10, 'Tecnicatura Superior en Analisis de Sistemas', 'Descripcion1', 'PlanCarr1', '123-2024-EJEMPLO');
+
+insert into CARRERAS (IdCarrera, Nombre, Descripcion, PlanEstudioCarr, ResolMinisterial)
+values (11, 'Tecnicatura Superior en Bioseguridad, Higiene y Seguridad', 'Descripcion2', 'PlanCarr2', '456-2024-EJEMPLO');
+
+insert into ESTUDIANTES (IdEstudiante, Nombre, Apellido, FechaNacimiento, Direccion, Telefono, Correo, IdCarrera1)
+values (1, 'Mariano', 'Villalba', '16/12/2003', 'Baibiene 2080', '3751782010', 'm.villalba@gmail.com', 10);
+
+insert into ESTUDIANTES (IdEstudiante, Nombre, Apellido, FechaNacimiento, Direccion, Telefono, Correo, IdCarrera1)
+values (2, 'Franco Emanuel', 'Anker Nielsen', '09/02/1999', 'M. Stargard 153', '3751498789', 'franconielsen99@gmail.com', 11);
+
+insert into MATERIAS (IdMateria, Nombre, AnioCursado, PlanEstudioMat, IdCarrera4)
+values (20, 'Base de Datos', 2, 'PlanMat1', 10);
+
+insert into MATERIAS (IdMateria, Nombre, AnioCursado, PlanEstudioMat, IdCarrera4)
+values (21, 'Programacion 2', 2, 'PlanMat2', 10);
+
+insert into MATERIAS (IdMateria, Nombre, AnioCursado, PlanEstudioMat, IdCarrera4)
+values (22, 'Bioquimica 1', 1, 'PlanMat3', 11);
+
+insert into MATERIAS (IdMateria, Nombre, AnioCursado, PlanEstudioMat, IdCarrera4)
+values (23, 'Matematica 1', 1, 'PlanMat4', 11);
+
+insert into CORRELATIVIDADES (IdCorrelatividad, IdMateria1, IdMateria2)
+values (30, 20, 21);
+
+insert into CORRELATIVIDADES (IdCorrelatividad, IdMateria1, IdMateria2)
+values (31, 23, 22);
+
+insert into MESAS (IdMesa, FechaHora, InicioInscripcion, FinInscripcion)
+values (50, '18/07/2024 18:30:00.59', '01/07/2024', '15/07/2024');
+
+insert into MESAS (IdMesa, FechaHora, InicioInscripcion, FinInscripcion)
+values (51, '20/07/2024 19:00:00.59', '03/07/2024', '17/07/2024');
+
+insert into ESTUDIANTES_MESAS (NotaExamen, IdMesa1, IdEstudiante2)
+values (7,51, 1);
+
+insert into ESTUDIANTES_MESAS (NotaExamen, IdMesa1, IdEstudiante2)
+values (8,50, 2);
+
+insert into INSCRIPCIONES (IdInscripcion, Estado, FechaInscripcion, IdEstudiante1, IdMateria3)
+values (40, 'Inscrito', '02/02/2024', 2, 23);
+
+insert into INSCRIPCIONES (IdInscripcion, Estado, FechaInscripcion, IdEstudiante1, IdMateria3)
+values (41, 'Inscrito', '20/07/2024', 1, 21);
+
+insert into INSCRIPCIONES (IdInscripcion, Estado, FechaInscripcion, IdEstudiante1, IdMateria3)
+values (42, ' No Inscrito', '20/03/2024', 1, 20);
+
+insert into INSCRIPCIONES (IdInscripcion, Estado, FechaInscripcion, IdEstudiante1, IdMateria3)
+values (43, ' No Inscrito', '02/07/2024', 2, 22);
+
+insert into TIPONOTAS (IdTipoNota, Descripcion)
+values (77, 'Parcial');
+
+insert into TIPONOTAS (IdTipoNota, Descripcion)
+values (78, 'Recuperatorio');
+
+insert into TIPONOTAS (IdTipoNota, Descripcion)
+values (79, 'Final');
+
+insert into NOTAS (IdNota, Valor, IdInscripcion1, IdTipoNota1)
+values (66, 8, 40, 78);
+
+insert into NOTAS (IdNota, Valor, IdInscripcion1, IdTipoNota1)
+values (67, 9, 41, 77);
