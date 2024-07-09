@@ -12,7 +12,7 @@ ResolMinisterial VARCHAR(50)
 
 CREATE TABLE MATERIAS (
 IdMateria SERIAL PRIMARY KEY,
-Nombre VARCHAR(100),
+Nombre VARCHAR(50),
 AnioCursado INT,
 PlanEstudioMat VARCHAR(100),
 IdCarrera4 INT,
@@ -24,9 +24,9 @@ IdEstudiante SERIAL PRIMARY KEY,
 Nombre VARCHAR(30),
 Apellido VARCHAR(30),
 FechaNacimiento DATE,
-Direccion VARCHAR(100),
+Direccion VARCHAR(50),
 Telefono VARCHAR(20),
-Correo VARCHAR(100),
+Correo VARCHAR(50),
 IdCarrera1 INT,
 FOREIGN KEY (IdCarrera1) REFERENCES CARRERAS(IdCarrera)
 );
@@ -69,7 +69,7 @@ FOREIGN KEY (IdMesa) REFERENCES MESAS(IdMesa)
 
 CREATE TABLE TIPONOTAS (
 IdTipoNota SERIAL PRIMARY KEY,
-Descripcion VARCHAR(100)
+Descripcion VARCHAR(20)
 );
 
 CREATE TABLE NOTAS (
